@@ -3,6 +3,7 @@ import { MatSnackBar } from '@angular/material';
 import { MessagesService } from '../messages.service'
 import { Message } from './message'
 import { HttpErrorResponse } from '@angular/common/http';
+import { AuthService } from '../auth.service'
 
 @Component({
   selector: 'app-messagesList',
@@ -11,7 +12,9 @@ import { HttpErrorResponse } from '@angular/common/http';
 })
 export class MessagesListComponent implements OnInit {
 
-  constructor(private messagesService: MessagesService, public snackBar: MatSnackBar) { }
+  constructor(private messagesService: MessagesService,
+    public authService: AuthService,
+    public snackBar: MatSnackBar) { }
   messages: Message[] = []
   isLoading = true
 
@@ -33,7 +36,10 @@ export class MessagesListComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.get100Messages()
+    console.log("Inited MessagesList")
+    if (this.authService.isAuthenticated()) {
+      this.get100Messages()
+    }
   }
 
 }

@@ -10,7 +10,19 @@
       <button mat-icon-button (click)="sidenavMenu.toggle()">
         <mat-icon>menu</mat-icon>
       </button>
-      <span>My Application</span>
+      <h1>{{title}}</h1>
+      <span class="toolbar-filler"></span>
+      <a mat-flat-button color="accent" (click)="authService.login()" *ngIf="!authService.isAuthenticated()">Login</a>
+      <span *ngIf="authService.isAuthenticated() && authService.id_token">
+        <mat-menu #appMenu="matMenu">
+          <button mat-menu-item>Settings</button>
+          <button mat-menu-item>Help</button>
+        </mat-menu>
+        <button mat-icon-button [matMenuTriggerFor]="appMenu">
+          <mat-icon>person</mat-icon>
+        </button>
+      </span>
+      <a mat-flat-button color="accent" (click)="authService.login()" *ngIf="authService.isAuthenticated()">Logout</a>
     </mat-toolbar>
     <router-outlet></router-outlet>
   </mat-sidenav-content>
