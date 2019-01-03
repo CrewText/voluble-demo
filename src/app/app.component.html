@@ -1,5 +1,5 @@
 <mat-sidenav-container fullscreen>
-  <mat-sidenav mode="over" #sidenavMenu>
+  <mat-sidenav mode="side" #sidenavMenu>
     <mat-nav-list>
       <a mat-list-item routerLink="/" (click)="sidenavMenu.close()">Dashboard </a>
       <a mat-list-item routerLink="/messages" (click)="sidenavMenu.close()">Messages</a>
@@ -22,7 +22,7 @@
           <mat-icon>person</mat-icon>
         </button>
       </span>
-      <a mat-flat-button color="accent" (click)="authService.login()" *ngIf="authService.isAuthenticated()">Logout</a>
+      <a mat-flat-button color="accent" (click)="authService.logout()" *ngIf="authService.isAuthenticated()">Logout</a>
     </mat-toolbar>
     <router-outlet></router-outlet>
   </mat-sidenav-content>
