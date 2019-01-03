@@ -18,9 +18,14 @@ export class MessagesService {
   constructor(private httpClient: HttpClient) { }
 
   get100Messages(offset: number = 0): Observable<VolubleRequest<Message[]>> {
-    let msgs: Message[]
-
     return this.httpClient.get<VolubleRequest<Message[]>>(`${this.apiBaseUrl}/messages`)
+      .pipe(retry(3))
+  }
+
+  getMessage(id: string): Observable<VolubleRequest<Message>> {
+    let url = `${this.apiBaseUrl}/messages/${id}`
+    console.log("Reqing URL " + url)
+    return this.httpClient.get<VolubleRequest<Message>>(url)
       .pipe(retry(3))
   }
 }

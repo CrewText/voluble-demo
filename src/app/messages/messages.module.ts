@@ -8,14 +8,28 @@ import { MatListModule } from '@angular/material/list'
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner'
 import { MatIconModule } from '@angular/material/icon';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
-import { AuthGuard } from '../auth/auth.guard'
+import { AuthGuard } from '../auth/auth.guard';
+import { MessageDetailComponent } from './message-detail/message-detail.component';
 
 const routes: Routes = [
-  { path: "messages", component: MessagesListComponent, canActivate: [AuthGuard] }
+  {
+    path: "messages",
+    canActivate: [AuthGuard],
+    children: [
+      {
+        path: '',
+        component: MessagesListComponent,
+      },
+      {
+        path: ':id',
+        component: MessageDetailComponent
+      }
+    ]
+  }
 ];
 
 @NgModule({
-  declarations: [MessagesListComponent],
+  declarations: [MessagesListComponent, MessageDetailComponent],
   imports: [
     MatCardModule,
     MatListModule,
