@@ -8,6 +8,7 @@ import { MatListModule } from '@angular/material/list'
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner'
 import { MatIconModule } from '@angular/material/icon';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { MatButtonModule } from '@angular/material/button'
 import { AuthGuard } from '../auth/auth.guard';
 import { MessageDetailComponent } from './message-detail/message-detail.component';
 
@@ -34,6 +35,7 @@ const routes: Routes = [
     MatCardModule,
     MatListModule,
     MatSnackBarModule,
+    MatButtonModule,
     MatProgressSpinnerModule,
     MatIconModule,
 

@@ -1,9 +1,15 @@
 <mat-card *ngIf="message">
+  <mat-icon [color]="getMessageStatusColour(message.message_state)">{{getMessageStatusIcon(message.message_state)}}</mat-icon>
   <mat-card-header>
-    <mat-card-title>&lt;Contact Will Go Here&gt;</mat-card-title>
-    <mat-card-subtitle>subtitle</mat-card-subtitle>
+    <mat-card-title *ngIf="contact">{{contact.first_name}} {{contact.surname}}</mat-card-title>
+    <mat-card-subtitle>
+      {{message.sent_time | date:"dd LLL yy, HH:mm:ss"}}
+    </mat-card-subtitle>
   </mat-card-header>
   <mat-card-content>
-    {{message.body}}
+    <p>
+      {{message.body}}
+    </p>
   </mat-card-content>
+  <mat-card-actions><button mat-stroked-button>REPLY</button></mat-card-actions>
 </mat-card>

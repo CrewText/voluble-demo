@@ -18,6 +18,10 @@ export class MessagesListComponent implements OnInit {
 
   get100Messages(offset: number = 0) {
     this.messagesService.get100Messages().subscribe((messagesReq) => {
+      // messagesReq.data.forEach(msg => {
+      //   switch()
+      //   msg.icon = this.getMessageStatusIcon(msg)
+      // });
       this.messages.push(...messagesReq.data)
       this.isLoading = false
     }, (error) => {

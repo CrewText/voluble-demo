@@ -24,8 +24,13 @@ export class MessagesService {
 
   getMessage(id: string): Observable<VolubleRequest<Message>> {
     let url = `${this.apiBaseUrl}/messages/${id}`
-    console.log("Reqing URL " + url)
     return this.httpClient.get<VolubleRequest<Message>>(url)
+      .pipe(retry(3))
+  }
+
+  getContactDetails(id: string): Observable<VolubleRequest<any>> {
+    let url = `${this.apiBaseUrl}/contacts/${id}`
+    return this.httpClient.get<VolubleRequest<any>>(url)
       .pipe(retry(3))
   }
 }
