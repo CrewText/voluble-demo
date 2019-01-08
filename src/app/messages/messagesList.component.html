@@ -18,9 +18,10 @@
       
         <app-message-detail [message]="msg"></app-message-detail>
       </mat-list-item>
-      <mat-progress-spinner *ngIf="isLoading===true" color="accent" mode="indeterminate"></mat-progress-spinner>
+      
     </mat-list>
     -->
+    <mat-progress-spinner *ngIf="isLoading===true" color="accent" mode="indeterminate"></mat-progress-spinner>
     <div *ngFor="let msg of messages" class="card-container">
       <app-message-detail [message]="msg"></app-message-detail>
     </div>

@@ -1,16 +1,16 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
-
-import { RouterModule, Routes, CanActivate } from '@angular/router';
-import { MessagesListComponent } from './messagesList.component'
 import { MatCardModule } from '@angular/material';
-import { MatListModule } from '@angular/material/list'
-import { MatProgressSpinnerModule } from '@angular/material/progress-spinner'
+import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
+import { MatListModule } from '@angular/material/list';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
-import { MatButtonModule } from '@angular/material/button'
+import { RouterModule, Routes } from '@angular/router';
 import { AuthGuard } from '../auth/auth.guard';
 import { MessageDetailComponent } from './message-detail/message-detail.component';
+import { MessagesListComponent } from './messagesList.component';
+
 
 const routes: Routes = [
   {

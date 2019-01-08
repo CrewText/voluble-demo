@@ -12,7 +12,8 @@ import { JwtModule } from '@auth0/angular-jwt';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { MessagesModule } from './messages/messages.module';
-import { NoOrganizationComponent } from './no-organization/no-organization.component';
+import { AuthModule } from './auth/auth.module'
+//import { NoOrganizationComponent } from './no-organization/no-organization.component';
 
 export function getAuthToken(): string {
   return localStorage.getItem('access_token')
@@ -21,7 +22,7 @@ export function getAuthToken(): string {
 @NgModule({
   declarations: [
     AppComponent,
-    NoOrganizationComponent
+    //NoOrganizationComponent
   ],
   imports: [
 
@@ -34,6 +35,7 @@ export function getAuthToken(): string {
     MatListModule,
     MatButtonModule,
     MessagesModule,
+    AuthModule,
     HttpClientModule,
     JwtModule.forRoot({
       config: {

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
   selector: 'app-no-organization',
@@ -9,6 +9,7 @@ export class NoOrganizationComponent implements OnInit {
 
   constructor() { }
 
+  @Input() public profile: any;
   ngOnInit() {
   }
 
