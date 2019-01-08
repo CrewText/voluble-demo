@@ -12,7 +12,8 @@ import { JwtModule } from '@auth0/angular-jwt';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { MessagesModule } from './messages/messages.module';
-import { AuthModule } from './auth/auth.module'
+import { AuthModule } from './auth/auth.module';
+import { ContactListComponent } from './contact-list/contact-list.component';
 //import { NoOrganizationComponent } from './no-organization/no-organization.component';
 
 export function getAuthToken(): string {
@@ -22,6 +23,7 @@ export function getAuthToken(): string {
 @NgModule({
   declarations: [
     AppComponent,
+    ContactListComponent,
     //NoOrganizationComponent
   ],
   imports: [
