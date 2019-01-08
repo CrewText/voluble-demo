@@ -10,6 +10,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { AuthGuard } from '../auth/auth.guard';
 import { MessageDetailComponent } from './message-detail/message-detail.component';
 import { MessagesListComponent } from './messagesList.component';
+import { MatToolbarModule } from '@angular/material/toolbar'
 
 
 const routes: Routes = [
@@ -33,6 +34,7 @@ const routes: Routes = [
   declarations: [MessagesListComponent, MessageDetailComponent],
   imports: [
     MatCardModule,
+    MatToolbarModule,
     MatListModule,
     MatSnackBarModule,
     MatButtonModule,
