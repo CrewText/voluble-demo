@@ -2,6 +2,7 @@ import { Injectable, EventEmitter } from '@angular/core';
 import { JwtHelperService } from '@auth0/angular-jwt';
 import * as auth0 from 'auth0-js';
 import * as Promise from 'bluebird';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -14,7 +15,7 @@ export class AuthService {
     clientID: 'COMAy4nBatqEuGzdTHEzOOc2ucpRywcs',
     domain: 'voluble-dev.eu.auth0.com',
     responseType: 'token id_token',
-    redirectUri: 'http://localhost:4200/auth/callback',
+    redirectUri: environment.authRedirectUrl,
     scope: 'openid profile read:current_user create:current_user_metadata update:current_user_metadata delete:current_user_metadata',
     audience: 'https://voluble-poc.herokuapp.com'
   });

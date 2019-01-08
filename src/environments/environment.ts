@@ -5,7 +5,8 @@
 export const environment = {
   production: false,
   //volubleApiUrl: "localhost:5000"
-  volubleApiUrl: "lvh.me:5000"
+  volubleApiUrl: "lvh.me:5000",
+  authRedirectUrl: "http://localhost:4200/auth/callback"
 };
 
 /*
