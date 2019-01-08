@@ -1,0 +1,8 @@
+<div class="overlay" *ngIf="!this.profile">
+    <mat-progress-spinner color="accent" mode="indeterminate"></mat-progress-spinner>
+</div>
+
+<div *ngIf="this.profile">
+    <app-no-organization [profile]=this.profile>
+    </app-no-organization>
+</div>
