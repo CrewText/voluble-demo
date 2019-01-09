@@ -14,7 +14,7 @@ interface VolubleRequest<T> {
   providedIn: 'root'
 })
 export class MessagesService {
-  private apiBaseUrl = `http://${environment.volubleApiUrl}`
+  private apiBaseUrl = `${environment.volubleApiUrl}`
   constructor(private httpClient: HttpClient) { }
 
   get100Messages(offset: number = 0): Observable<VolubleRequest<Message[]>> {
