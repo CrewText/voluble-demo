@@ -42,7 +42,7 @@ export function getAuthToken(): string {
     JwtModule.forRoot({
       config: {
         tokenGetter: getAuthToken,
-        whitelistedDomains: ['localhost:4200', 'auth0.com', 'herokuapp.com', 'lvh.me:5000']
+        whitelistedDomains: ['localhost:4200', 'auth0.com', 'voluble-poc.herokuapp.com', 'crewtext.com', 'lvh.me:5000']
       }
     }),
     AppRoutingModule,
