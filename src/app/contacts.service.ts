@@ -13,8 +13,8 @@ export class ContactsService {
   constructor(private httpClient: HttpClient) {
   }
 
-  getContacts(): Observable<VolubleRequest<any[]>> {
-    return this.httpClient.get<VolubleRequest<any[]>>(`${environment.volubleApiUrl}/contacts`)
+  get100Contacts(offset = 0): Observable<VolubleRequest<any[]>> {
+    return this.httpClient.get<VolubleRequest<any[]>>(`${environment.volubleApiUrl}/contacts?offset=${offset}`)
       .pipe(retry(3))
   }
 }

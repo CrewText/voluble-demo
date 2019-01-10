@@ -3,8 +3,8 @@ import { CommonModule } from '@angular/common';
 import { RouterModule, Routes } from '@angular/router';
 import { ClarityModule } from '@clr/angular';
 import { AuthGuard } from '../auth/auth.guard';
-import { ContactListComponent } from '../contact-list/contact-list.component';
-import { Router } from 'express';
+import { ContactListComponent } from '../contacts/contact-list/contact-list.component';
+import { FormsModule } from '@angular/forms';
 
 const routes: Routes = [
   {
@@ -23,6 +23,7 @@ const routes: Routes = [
 @NgModule({
   declarations: [ContactListComponent],
   imports: [
+    FormsModule,
     ClarityModule,
     CommonModule,
     RouterModule.forRoot(routes)

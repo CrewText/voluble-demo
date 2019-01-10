@@ -36,6 +36,7 @@ export class CallbackComponent implements OnInit {
   private onAccessTokenChange(new_auth_token) {
     this.authService.accessTokenChangeEventEmitter.unsubscribe()
     this.profile = this.authService.decodeToken(this.authService.id_token)
+    if (this.profile["https://crewtext.com/voluble_id"]) { this.router.navigate(['/']) }
   }
 
   ngOnInit() {
