@@ -1,17 +1,17 @@
-<mat-card>
-    <mat-card-header>
-        <mat-card-title>You're not part of an Organization yet!</mat-card-title>
-    </mat-card-header>
-    <mat-card-content>
-        <p>
-            Shall we get you set up with a new one, or do you want to log into an existing Organization?
-        </p>
-    </mat-card-content>
-    <mat-card-actions>
-        <button mat-button color="primary">START NEW ORGANIZATION</button>
-        <button mat-button color="accent">LOG INTO ORGANIZATION</button>
-    </mat-card-actions>
-</mat-card>
-<h1>
-
-</h1>
+<div class="modal">
+    <div class="modal-dialog" role="dialog" aria-hidden="true">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title">You're not part of an Organization yet!</h3>
+            </div>
+            <div class="modal-body">
+                <p>Do you want to join an existing Organization, or create a new one?</p>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-outline" type="button">Join Organization</button>
+                <button class="btn btn-primary" type="button">Create New Organization</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal-backdrop" aria-hidden="true"></div>

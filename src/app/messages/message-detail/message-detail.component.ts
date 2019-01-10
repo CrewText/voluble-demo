@@ -41,26 +41,22 @@ export class MessageDetailComponent implements OnInit {
     switch (message_status) {
       case "MSG_PENDING":
       case "MSG_SENDING":
-        msg_icon = "hourglass_empty"
+        msg_icon = "hourglass"
         break;
       case "MSG_DELIVERED_SERVICE":
-        msg_icon = "done"
-        break;
       case "MSG_SENT":
       case "MSG_DELIVERED_USER":
-        msg_icon = "done_all"
-        break;
       case "MSG_READ":
-        msg_icon = "drafts"
-        break
+        msg_icon = "check"
+        break;
       case "MSG_REPLIED":
-        msg_icon = "reply"
+        msg_icon = "two-way-arrows"
         break
       case "MSG_FAILED":
-        msg_icon = "error"
+        msg_icon = "error-standard"
         break
       case "MSG_ARRIVED":
-        msg_icon = "subdirectory_arrow_right"
+        msg_icon = "envelope"
         break;
     }
 
@@ -68,7 +64,7 @@ export class MessageDetailComponent implements OnInit {
   }
 
   public getMessageStatusColour(message_status: string): string {
-    return message_status == "MSG_FAILED" ? "warn" : (message_status == "MSG_PENDING" || message_status == "MSG_SENDING" ? "accent" : "primary")
+    return message_status == "MSG_FAILED" ? "is-error" : (message_status == "MSG_PENDING" || message_status == "MSG_SENDING" ? "is-highlight" : "")
   }
 
   ngOnInit() {

@@ -1,34 +1,5 @@
-<mat-toolbar>
-  <h1>Messages</h1>
-</mat-toolbar>
-<mat-card>
-  <!--
-  <mat-card-header>
-    <mat-card-title>Messages</mat-card-title>
-  </mat-card-header>
--->
-  <mat-card-content>
-    <!--
-    <mat-list>
-      <mat-list-item *ngFor="let msg of messages">
-        
-        <mat-icon mat-list-icon>
-
-          {{getMessageStatusIcon(msg.message_state)}}</mat-icon>
-        
-        <h3 mat-line><a routerLink="/messages/{{msg.id}}">{{msg.contact}}</a></h3>
-        <p mat-line>
-          {{msg.body}}
-        </p>
-      
-        <app-message-detail [message]="msg"></app-message-detail>
-      </mat-list-item>
-      
-    </mat-list>
-    -->
-    <mat-progress-spinner *ngIf="isLoading===true" color="accent" mode="indeterminate"></mat-progress-spinner>
-    <div *ngFor="let msg of messages" class="card-container">
-      <app-message-detail [message]="msg"></app-message-detail>
-    </div>
-  </mat-card-content>
-</mat-card>
+<h2>Messages</h2>
+<span class="spinner" *ngIf="isLoading===true"></span>
+<div *ngFor="let msg of messages">
+  <app-message-detail [message]="msg"></app-message-detail>
+</div>

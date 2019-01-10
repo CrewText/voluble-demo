@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { MatSnackBar } from '@angular/material';
 import { MessagesService } from '../messages.service'
 import { Message } from './message'
 import { HttpErrorResponse } from '@angular/common/http';
@@ -11,8 +10,7 @@ import { HttpErrorResponse } from '@angular/common/http';
 })
 export class MessagesListComponent implements OnInit {
 
-  constructor(private messagesService: MessagesService,
-    public snackBar: MatSnackBar) { }
+  constructor(private messagesService: MessagesService) { }
   messages: Message[] = []
   isLoading = true
 
@@ -32,7 +30,7 @@ export class MessagesListComponent implements OnInit {
   onHttpClientError(error: HttpErrorResponse) {
     this.isLoading = false;
     console.error(error.message)
-    this.snackBar.open(error.message, "OK", { panelClass: "warn" })
+    //this.snackBar.open(error.message, "OK", { panelClass: "warn" })
   }
 
   ngOnInit() {

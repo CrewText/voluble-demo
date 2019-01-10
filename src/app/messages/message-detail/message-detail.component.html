@@ -1,15 +1,17 @@
-<mat-card *ngIf="message">
-  <mat-icon [color]="getMessageStatusColour(message.message_state)">{{getMessageStatusIcon(message.message_state)}}</mat-icon>
-  <mat-card-header>
-    <mat-card-title *ngIf="contact">{{contact.first_name}} {{contact.surname}}</mat-card-title>
-    <mat-card-subtitle>
-      {{message.sent_time | date:"dd LLL yy, HH:mm:ss"}}
-    </mat-card-subtitle>
-  </mat-card-header>
-  <mat-card-content>
-    <p>
-      {{message.body}}
-    </p>
-  </mat-card-content>
-  <mat-card-actions><button mat-stroked-button>REPLY</button></mat-card-actions>
-</mat-card>
+<div class="card" *ngIf="message">
+  <div class="card-block">
+    <div class="card-header">
+      <clr-icon [attr.shape]="getMessageStatusIcon(message.message_state)" [class]="getMessageStatusColour(message.message_state)"></clr-icon>&nbsp;
+      <span *ngIf="contact">{{contact.first_name}} {{contact.surname}}</span>
+      <h5>{{message.sent_time | date:"dd LLL yy, HH:mm:ss"}}</h5>
+    </div>
+    <div class="card-text">
+      <p>
+        {{message.body}}
+      </p>
+    </div>
+    <div class="card-footer">
+      <button class="btn btn-link">Reply</button>
+    </div>
+  </div>
+</div>

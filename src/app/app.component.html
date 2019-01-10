@@ -1,4 +1,25 @@
-<mat-sidenav-container fullscreen>
+<div class="main-container">
+
+  <header class="header header-6">
+    <div class="branding">
+      <span class="title">{{title}}</span>
+    </div>
+    <div class="header-actions">
+      <a href="#" class="nav-link nav-icon" (click)="authService.login()" *ngIf="!authService.isAuthenticated()">
+        <clr-icon shape="login"></clr-icon>
+      </a>
+      <a href="#" class="nav-link nav-icon" (click)="authService.logout()" *ngIf="authService.isAuthenticated()">
+        <clr-icon shape="logout"></clr-icon>
+      </a>
+    </div>
+  </header>
+  <div class="content-container">
+    <!-- subnav here -->
+    <div class="content-area">
+      <router-outlet></router-outlet>
+    </div>
+  </div>
+  <!--
   <mat-sidenav mode="side" #sidenavMenu class="mat-elevation-z6">
     <mat-nav-list>
       <a mat-list-item routerLink="/" (click)="sidenavMenu.close()">Dashboard </a>
@@ -10,20 +31,6 @@
       <button mat-icon-button (click)="sidenavMenu.toggle()">
         <mat-icon>menu</mat-icon>
       </button>
-      <h1>{{title}}</h1>
-      <span class="toolbar-filler"></span>
-      <a mat-flat-button color="accent" (click)="authService.login()" *ngIf="!authService.isAuthenticated()">Login</a>
-      <span *ngIf="authService.isAuthenticated() && authService.id_token">
-        <mat-menu #appMenu="matMenu">
-          <button mat-menu-item>Settings</button>
-          <button mat-menu-item>Help</button>
-        </mat-menu>
-        <button mat-icon-button [matMenuTriggerFor]="appMenu">
-          <mat-icon>person</mat-icon>
-        </button>
-      </span>
-      <a mat-flat-button color="accent" (click)="authService.logout()" *ngIf="authService.isAuthenticated()">Logout</a>
-    </mat-toolbar>
-    <router-outlet></router-outlet>
   </mat-sidenav-content>
-</mat-sidenav-container>
+  -->
+</div>
