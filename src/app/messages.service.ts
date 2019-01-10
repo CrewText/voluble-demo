@@ -4,11 +4,7 @@ import { Observable } from 'rxjs';
 import { retry } from 'rxjs/operators';
 import { environment } from 'src/environments/environment';
 import { Message } from './messages/message';
-
-interface VolubleRequest<T> {
-  status: "success" | "error" | "fail",
-  data: T
-}
+import { VolubleRequest } from './voluble-request'
 
 @Injectable({
   providedIn: 'root'

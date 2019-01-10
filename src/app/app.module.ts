@@ -1,15 +1,14 @@
-import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { JwtModule } from '@auth0/angular-jwt';
+import { ClarityModule } from '@clr/angular';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { MessagesModule } from './messages/messages.module';
 import { AuthModule } from './auth/auth.module';
-import { ContactListComponent } from './contact-list/contact-list.component';
-import { ClarityModule } from '@clr/angular';
-//import { NoOrganizationComponent } from './no-organization/no-organization.component';
+import { ContactsModule } from './contacts/contacts.module';
+import { MessagesModule } from './messages/messages.module';
 
 export function getAuthToken(): string {
   return localStorage.getItem('access_token')
@@ -18,14 +17,13 @@ export function getAuthToken(): string {
 @NgModule({
   declarations: [
     AppComponent,
-    ContactListComponent,
-    //NoOrganizationComponent
   ],
   imports: [
 
     BrowserModule,
     BrowserAnimationsModule,
     MessagesModule,
+    ContactsModule,
     AuthModule,
     HttpClientModule,
     JwtModule.forRoot({
