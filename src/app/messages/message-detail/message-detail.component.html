@@ -1,6 +1,6 @@
 <div class="card" *ngIf="message">
   <div class="card-block">
-    <div class="card-header">
+    <div class="card-title">
       <clr-icon [attr.shape]="getMessageStatusIcon(message.message_state)" [class]="getMessageStatusColour(message.message_state)"></clr-icon>&nbsp;
       <span *ngIf="contact">{{contact.first_name}} {{contact.surname}}</span>
       <h5>{{message.sent_time | date:"dd LLL yy, HH:mm:ss"}}</h5>
