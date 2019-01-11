@@ -17,7 +17,7 @@ class ContactFilter implements ClrDatagridStringFilterInterface<any>{
 })
 export class ContactListComponent implements OnInit {
   public contacts: any[] = []
-  private contactFilter = new ContactFilter()
+  public contactFilter = new ContactFilter()
   public nameSearch: string
 
   constructor(private contactsService: ContactsService) { }
