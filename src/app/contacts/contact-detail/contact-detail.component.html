@@ -46,14 +46,12 @@
       </form>
     </div>
   </div>
-  <div class="card-footer" *ngIf="userCanEdit">
-    <div class="btn-group btn-link">
+  <div class="card-footer">
+    <div class="btn-group btn-link" *ngIf="userCanEdit">
       <button class="btn">Save</button>
       <button class="btn">Cancel</button>
     </div>
-    <button class="btn btn-outline-danger">Delete</button>
-  </div>
-  <div class="card-footer" *ngIf="!userCanEdit">
-    <p>You cannot edit this contact.</p>
+    <button class="btn btn-outline-danger" *ngIf="userCanDelete">Delete</button>
+    <p *ngIf="!userCanEdit">You cannot edit this contact.</p>
   </div>
 </div>

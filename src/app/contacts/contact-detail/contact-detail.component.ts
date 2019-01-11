@@ -18,11 +18,13 @@ export class ContactDetailComponent implements OnInit {
 
   public contact: Contact;
   public userCanEdit = false
+  public userCanDelete = false
 
   private getContact(id: string) {
     this.contactsService.getContact(id).subscribe((contactReq) => {
       this.contact = contactReq.data
       this.userCanEdit = this.authService.userHasScope(['contact:edit', 'voluble:admin'])
+      this.userCanDelete = this.authService.userHasScope(['contact:delete', 'voluble:admin'])
     })
   }
 
