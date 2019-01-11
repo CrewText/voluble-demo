@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ContactsService } from 'src/app/contacts.service';
 import { Contact } from '../contact';
+import { AuthService } from 'src/app/auth.service';
 
 
 @Component({
@@ -12,13 +13,16 @@ import { Contact } from '../contact';
 export class ContactDetailComponent implements OnInit {
 
   constructor(private contactsService: ContactsService,
-    private route: ActivatedRoute) { }
+    private route: ActivatedRoute,
+    private authService: AuthService) { }
 
   public contact: Contact;
+  public userCanEdit = false
 
   private getContact(id: string) {
     this.contactsService.getContact(id).subscribe((contactReq) => {
       this.contact = contactReq.data
+      this.userCanEdit = this.authService.userHasScope(['contact:edit', 'voluble:admin'])
     })
   }
 

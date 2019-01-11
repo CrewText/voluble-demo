@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { ClrDatagridStateInterface, ClrDatagridStringFilterInterface } from "@clr/angular";
 import { ContactsService } from '../../contacts.service';
-import { ClrDatagridStateInterface } from "@clr/angular";
-import { ClrDatagridStringFilterInterface } from "@clr/angular";
 
 class ContactFilter implements ClrDatagridStringFilterInterface<any>{
 

@@ -124,4 +124,13 @@ export class AuthService {
   public decodeToken(token: string): any {
     return this.jwtHelper.decodeToken(token)
   }
+
+  public userHasScope(requested_scopes: string[]): boolean {
+    let user_scopes = []
+    user_scopes = this.jwtHelper.decodeToken(this.access_token)['scope'].split(' ')
+    return requested_scopes.some((scope) => {
+      return user_scopes.indexOf(scope) > -1
+
+    })
+  }
 }
