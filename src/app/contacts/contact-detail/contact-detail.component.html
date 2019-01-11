@@ -1,0 +1,56 @@
+<h2>Contact</h2>
+<span class="spinner" *ngIf="!contact"></span>
+<div class="card" *ngIf="contact">
+  <div class="card-header">
+    {{contact.first_name}} {{contact.surname}}
+  </div>
+  <div class="card-block">
+    <div class="card-title">
+      Basic Information
+    </div>
+    <div class="card-text">
+      <form clrForm>
+        <clr-input-container>
+          <label for="first_name">
+            First Name
+          </label>
+          <input clrInput type="text" name="first_name" [(ngModel)]="contact.first_name">
+        </clr-input-container>
+        <clr-input-container>
+          <label for="surname">
+            Surname
+          </label>
+          <input clrInput type="text" name="surname" [(ngModel)]="contact.surname">
+        </clr-input-container>
+      </form>
+    </div>
+  </div>
+  <div class="card-block">
+    <div class="card-title">
+      Contact Details
+    </div>
+    <div class="card-text">
+      <form clrForm>
+        <clr-input-container>
+          <label for="email_address">
+            Email Address
+          </label>
+          <input clrInput type="text" name="email_address" [(ngModel)]="contact.email_address">
+        </clr-input-container>
+        <clr-input-container>
+          <label for="phone_number">
+            Phone Number
+          </label>
+          <input clrInput type="tel" [(ngModel)]="contact.phone_number" name="phone_number">
+        </clr-input-container>
+      </form>
+    </div>
+  </div>
+  <div class="card-footer">
+    <div class="btn-group btn-link">
+      <button class="btn">Save</button>
+      <button class="btn">Cancel</button>
+    </div>
+    <button class="btn btn-outline-danger">Delete</button>
+  </div>
+</div>

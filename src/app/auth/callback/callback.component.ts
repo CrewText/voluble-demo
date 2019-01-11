@@ -36,17 +36,11 @@ export class CallbackComponent implements OnInit {
   private onAccessTokenChange(new_auth_token) {
     this.authService.accessTokenChangeEventEmitter.unsubscribe()
     this.profile = this.authService.decodeToken(this.authService.id_token)
+    // If there is a voluble_id, Voluble must have associated this User with an Org, so move on
     if (this.profile["https://crewtext.com/voluble_id"]) { this.router.navigate(['/']) }
   }
 
   ngOnInit() {
-
-    //this.router.navigate()
-    //   this.profileService.getLoggedInUserProfile().subscribe((profile: any) => {
-    //     console.log(profile)
-    //   })
-    // }
-
 
   }
 }

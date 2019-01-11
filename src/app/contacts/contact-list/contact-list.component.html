@@ -13,8 +13,9 @@
   <clr-dg-column>Phone Number</clr-dg-column>
   <clr-dg-column>Email Address</clr-dg-column>
 
+
   <clr-dg-row *ngFor="let cnt of contacts; trackBy:trackByContactId">
-    <clr-dg-cell>{{cnt.first_name}} {{cnt.surname}}</clr-dg-cell>
+    <clr-dg-cell><a routerLink="/contacts/{{cnt.id}}">{{cnt.first_name}} {{cnt.surname}}</a></clr-dg-cell>
     <clr-dg-cell>{{cnt.phone_number}}</clr-dg-cell>
     <clr-dg-cell>{{cnt.email_address}}</clr-dg-cell>
   </clr-dg-row>

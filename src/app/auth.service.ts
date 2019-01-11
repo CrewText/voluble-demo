@@ -16,7 +16,7 @@ export class AuthService {
     domain: 'voluble-dev.eu.auth0.com',
     responseType: 'token id_token',
     redirectUri: environment.authRedirectUrl,
-    scope: 'openid profile read:current_user create:current_user_metadata update:current_user_metadata delete:current_user_metadata',
+    scope: 'openid profile email read:current_user create:current_user_metadata update:current_user_metadata delete:current_user_metadata',
     audience: 'https://voluble-poc.herokuapp.com'
   });
 

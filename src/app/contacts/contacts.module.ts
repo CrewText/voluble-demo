@@ -5,6 +5,7 @@ import { ClarityModule } from '@clr/angular';
 import { AuthGuard } from '../auth/auth.guard';
 import { ContactListComponent } from '../contacts/contact-list/contact-list.component';
 import { FormsModule } from '@angular/forms';
+import { ContactDetailComponent } from './contact-detail/contact-detail.component';
 
 const routes: Routes = [
   {
@@ -14,6 +15,10 @@ const routes: Routes = [
       {
         path: '',
         component: ContactListComponent,
+      },
+      {
+        path: ':id',
+        component: ContactDetailComponent
       }
     ]
   }
@@ -21,7 +26,7 @@ const routes: Routes = [
 
 
 @NgModule({
-  declarations: [ContactListComponent],
+  declarations: [ContactListComponent, ContactDetailComponent],
   imports: [
     FormsModule,
     ClarityModule,
