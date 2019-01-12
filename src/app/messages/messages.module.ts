@@ -15,6 +15,7 @@ const routes: Routes = [
       {
         path: '',
         component: MessagesListComponent,
+        data: { title: "Message List" }
       },
       {
         path: ':id',

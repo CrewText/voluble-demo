@@ -9,6 +9,7 @@ import { AppComponent } from './app.component';
 import { AuthModule } from './auth/auth.module';
 import { ContactsModule } from './contacts/contacts.module';
 import { MessagesModule } from './messages/messages.module';
+import { SubnavComponent } from './subnav/subnav.component';
 
 export function getAuthToken(): string {
   return localStorage.getItem('access_token')
@@ -17,6 +18,7 @@ export function getAuthToken(): string {
 @NgModule({
   declarations: [
     AppComponent,
+    SubnavComponent,
   ],
   imports: [
 

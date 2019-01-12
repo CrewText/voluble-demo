@@ -1,0 +1,7 @@
+<nav class="subnav" *ngIf="subNavLinks.length">
+  <ul class="nav">
+    <li class="nav-item" *ngFor="let link of subNavLinks">
+      <a class="nav-link" href="#" routerLink="{{link.path}}">{{link.title}}</a>
+    </li>
+  </ul>
+</nav>
