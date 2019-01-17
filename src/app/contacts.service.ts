@@ -20,7 +20,7 @@ export class ContactsService {
   }
 
   getContact(id: string): Observable<VolubleRequest<Contact>> {
-    return this.httpClient.get<VolubleRequest<any>>(`${environment.volubleApiUrl}/contacts/${id}`)
+    return this.httpClient.get<VolubleRequest<Contact>>(`${environment.volubleApiUrl}/contacts/${id}`)
       .pipe(retry(3))
   }
 }

@@ -1,0 +1,20 @@
+<form clrForm clrLayout="horizontal">
+  <clr-select-container *ngIf="contactsList">
+    <label for="contacts">Contacts</label>
+    <select clrSelect name="contact" (click)="getServicechainsAvailable()" [(ngModel)]="contact">
+      <option *ngFor="let contact of contactsList" [ngValue]="contact">{{contact.first_name}}
+        {{contact.surname}}</option>
+    </select>
+  </clr-select-container>
+  <clr-textarea-container>
+    <label for="message">Message</label>
+    <textarea clrTextarea [(ngModel)]="message" name="message" placeholder="Type your message here"></textarea>
+  </clr-textarea-container>
+  <clr-select-container>
+    <label for="servicechains">Servicechains</label>
+    <select clrSelect [(ngModel)]="servicechain" name="contact_servicechains">
+      <option *ngFor="let sc of servicechainsAvailable" value="{{sc}}">{{sc.name}}</option>
+    </select>
+  </clr-select-container>
+</form>
+<p *ngIf="servicechain">{{servicechain.name}}</p>

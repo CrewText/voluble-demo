@@ -1,8 +1,7 @@
-import { Component, OnInit, Input } from '@angular/core';
-import { ActivatedRoute, ParamMap } from '@angular/router'
-import { switchMap, tap } from 'rxjs/operators';
-import { MessagesService } from '../../messages.service'
-import { Message } from '../message'
+import { Component, Input, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { MessagesService } from '../../messages.service';
+import { Message } from '../message';
 
 @Component({
   selector: 'app-message-detail',

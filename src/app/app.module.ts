@@ -10,6 +10,7 @@ import { AuthModule } from './auth/auth.module';
 import { ContactsModule } from './contacts/contacts.module';
 import { MessagesModule } from './messages/messages.module';
 import { SubnavComponent } from './subnav/subnav.component';
+import { ServicechainsModule } from './servicechains/servicechains.module';
 
 export function getAuthToken(): string {
   return localStorage.getItem('access_token')
@@ -26,6 +27,7 @@ export function getAuthToken(): string {
     BrowserAnimationsModule,
     MessagesModule,
     ContactsModule,
+    ServicechainsModule,
     AuthModule,
     HttpClientModule,
     JwtModule.forRoot({

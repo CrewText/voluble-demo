@@ -3,13 +3,16 @@ import { JwtHelperService } from '@auth0/angular-jwt';
 import * as auth0 from 'auth0-js';
 import * as Promise from 'bluebird';
 import { environment } from 'src/environments/environment';
+import { HttpClient } from '@angular/common/http';
+import { VolubleRequest } from './voluble-request';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
 
-  constructor(private jwtHelper: JwtHelperService) { }
+  constructor(private jwtHelper: JwtHelperService,
+    private httpClient: HttpClient) { }
 
   private auth0Auth = new auth0.WebAuth({
     clientID: 'COMAy4nBatqEuGzdTHEzOOc2ucpRywcs',
