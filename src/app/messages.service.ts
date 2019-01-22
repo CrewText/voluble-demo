@@ -5,6 +5,7 @@ import { retry } from 'rxjs/operators';
 import { environment } from 'src/environments/environment';
 import { Message } from './messages/message';
 import { VolubleRequest } from './voluble-request'
+import { Contact } from './contacts/contact';
 
 @Injectable({
   providedIn: 'root'
@@ -24,9 +25,14 @@ export class MessagesService {
       .pipe(retry(3))
   }
 
-  getContactDetails(id: string): Observable<VolubleRequest<any>> {
+  getContactDetails(id: string): Observable<VolubleRequest<Contact>> {
     let url = `${this.apiBaseUrl}/contacts/${id}`
-    return this.httpClient.get<VolubleRequest<any>>(url)
+    return this.httpClient.get<VolubleRequest<Contact>>(url)
       .pipe(retry(3))
+  }
+
+  sendMessage(msg: { msg_body: string, contact_id: string, servicechain_id: string }): Observable<VolubleRequest<Message>> {
+    let url = `${this.apiBaseUrl}/messages`
+    return this.httpClient.post<VolubleRequest<Message>>(url, msg)
   }
 }

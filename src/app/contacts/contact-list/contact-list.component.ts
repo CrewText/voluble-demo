@@ -1,10 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { ClrDatagridStateInterface, ClrDatagridStringFilterInterface } from "@clr/angular";
 import { ContactsService } from '../../contacts.service';
+import { Contact } from '../contact';
 
-class ContactFilter implements ClrDatagridStringFilterInterface<any>{
+class ContactFilter implements ClrDatagridStringFilterInterface<Contact>{
 
-  accepts(contact: any, search: string): boolean {
+  accepts(contact: Contact, search: string): boolean {
     return contact.first_name.indexOf(search) > -1 || contact.surname.indexOf(search) > -1
   }
 }
