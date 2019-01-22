@@ -1,0 +1,40 @@
+<clr-wizard #wizardxl [(clrWizardOpen)]="wizardOpen" [clrWizardClosable]="false">
+  <clr-wizard-title>New Organization</clr-wizard-title>
+
+  <clr-wizard-button [type]="'previous'">Back</clr-wizard-button>
+  <clr-wizard-button [type]="'next'">Next</clr-wizard-button>
+  <clr-wizard-button [type]="'finish'">Finish</clr-wizard-button>
+
+  <clr-wizard-page>
+    <ng-template clrPageTitle>Organization Overview</ng-template>
+    <form clrForm>
+      <clr-input-container>
+        <label>Organization Name</label>
+        <input clrInput type="text" [(ngModel)]="org_name" name="org_name">
+      </clr-input-container>
+    </form>
+  </clr-wizard-page>
+
+  <clr-wizard-page>
+    <ng-template clrPageTitle>Contact Details</ng-template>
+    <form clrForm>
+      <clr-input-container>
+        <label>Phone Number</label>
+        <input clrInput type="tel" [(ngModel)]="org_phone_number" name="org_phone_number">
+      </clr-input-container>
+    </form>
+  </clr-wizard-page>
+
+  <clr-wizard-page #confirm_page clrWizardPagePreventDefault="true" (clrWizardPageOnCommit)="onCommit()">
+    <ng-template clrPageTitle>Confirmation</ng-template>
+    <p>You're about to create a new Organization with the following details:</p>
+    <p>
+      <strong>Organization Name: </strong>{{org_name}}
+      <br />
+      <strong>Phone Number: </strong>{{org_phone_number}}
+    </p>
+    <div class="spinner" *ngIf="show_spinner">
+      Loading...
+    </div>
+  </clr-wizard-page>
+</clr-wizard>

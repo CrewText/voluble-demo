@@ -11,6 +11,7 @@ import { ContactsModule } from './contacts/contacts.module';
 import { MessagesModule } from './messages/messages.module';
 import { SubnavComponent } from './subnav/subnav.component';
 import { ServicechainsModule } from './servicechains/servicechains.module';
+import { OrgsModule } from './orgs/orgs.module';
 
 export function getAuthToken(): string {
   return localStorage.getItem('access_token')
@@ -28,6 +29,7 @@ export function getAuthToken(): string {
     MessagesModule,
     ContactsModule,
     ServicechainsModule,
+    OrgsModule,
     AuthModule,
     HttpClientModule,
     JwtModule.forRoot({
