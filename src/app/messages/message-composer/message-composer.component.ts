@@ -1,10 +1,11 @@
-import { Component, OnInit, Input, OnChanges, SimpleChanges, DoCheck } from '@angular/core';
+import { Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
+import { AuthService } from 'src/app/auth.service';
 import { ContactsService } from 'src/app/contacts.service';
-import { MessagesService } from 'src/app/messages.service';
 import { Contact } from 'src/app/contacts/contact';
+import { MessagesService } from 'src/app/messages.service';
 import { ServicechainService } from 'src/app/servicechain.service';
 import { Servicechain } from 'src/app/servicechains/servicechain';
-import { AuthService } from 'src/app/auth.service';
+import { Message } from '../message';
 
 @Component({
   selector: 'app-message-composer',
@@ -18,7 +19,7 @@ export class MessageComposerComponent implements OnInit, OnChanges {
     private scService: ServicechainService,
     private authService: AuthService) { }
 
-  @Input() message: string = ""
+  @Input() message_text: string = ""
   @Input() contact: Contact
   public servicechainsAvailable: Servicechain[]
   @Input() public servicechain: Servicechain
@@ -44,6 +45,20 @@ export class MessageComposerComponent implements OnInit, OnChanges {
         })
     }
 
+  }
+
+  sendMessage() {
+    let msg = {
+      msg_body: this.message_text,
+      contact_id: this.contact.id,
+      servicechain_id: this.servicechain.id,
+    }
+
+    console.log(msg)
+    this.messagesService.sendMessage(msg)
+      .subscribe((msgReq) => {
+        console.log(msgReq)
+      })
   }
 
   ngOnInit() {

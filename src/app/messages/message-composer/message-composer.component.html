@@ -8,7 +8,7 @@
   </clr-select-container>
   <clr-textarea-container>
     <label for="message">Message</label>
-    <textarea clrTextarea [(ngModel)]="message" name="message" placeholder="Type your message here"></textarea>
+    <textarea clrTextarea [(ngModel)]="message_text" name="message_text" placeholder="Type your message here"></textarea>
   </clr-textarea-container>
   <clr-select-container>
     <label for="servicechains">Servicechains</label>
@@ -16,5 +16,6 @@
       <option *ngFor="let sc of servicechainsAvailable" value="{{sc}}">{{sc.name}}</option>
     </select>
   </clr-select-container>
+  <button class="btn btn-primary" (click)="sendMessage()" [class.disabled]="(!contact) && (!message_text)">Send</button>
+  <button class="btn btn-danger-outline">Discard</button>
 </form>
-<p *ngIf="servicechain">{{servicechain.name}}</p>
