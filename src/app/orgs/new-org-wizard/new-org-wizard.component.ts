@@ -34,7 +34,11 @@ export class NewOrgWizardComponent implements OnInit {
     })
       .subscribe((orgReq) => {
         console.log(orgReq)
+
         this.show_spinner = false
+        if (orgReq.status == "success") {
+          this.wizardOpen = false
+        }
         // this.orgsService.addUserToOrganization(orgReq.data["id"], this.authService.getLoggedInUserId())
         //   .subscribe((userReq) => {
         //     console.log(userReq)

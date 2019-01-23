@@ -38,6 +38,9 @@ export class CallbackComponent implements OnInit {
     this.profile = this.authService.decodeToken(this.authService.id_token)
     // If there is a voluble_id, Voluble must have associated this User with an Org, so move on
     if (this.profile["https://crewtext.com/voluble_id"]) { this.router.navigate(['/']) }
+    else {
+      this.router.navigate(['/orgs', 'new'])
+    }
   }
 
   ngOnInit() {

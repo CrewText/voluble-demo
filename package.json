@@ -30,7 +30,7 @@
     "@clr/icons": "^1.0.3-patch",
     "@clr/ui": "^1.0.3-patch",
     "@webcomponents/custom-elements": "^1.0.0",
-    "auth0-js": "^9.8.2",
+    "auth0-js": "^9.9.0",
     "bluebird": "^3.5.3",
     "core-js": "^2.5.4",
     "express": "^4.16.4",
