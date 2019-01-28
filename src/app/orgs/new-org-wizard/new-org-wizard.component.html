@@ -27,14 +27,15 @@
 
   <clr-wizard-page #confirm_page clrWizardPagePreventDefault="true" (clrWizardPageOnCommit)="onCommit()">
     <ng-template clrPageTitle>Confirmation</ng-template>
-    <p>You're about to create a new Organization with the following details:</p>
-    <p>
+    <p *ngIf="!is_loading">You're about to create a new Organization with the following details:</p>
+    <p *ngIf="!is_loading">
       <strong>Organization Name: </strong>{{org_name}}
       <br />
       <strong>Phone Number: </strong>{{org_phone_number}}
     </p>
-    <div class="spinner" *ngIf="show_spinner">
+    <span class="spinner spinner-inline" *ngIf="is_loading">
       Loading...
-    </div>
+    </span>
+    <span *ngIf="is_loading">{{loading_text}}</span>
   </clr-wizard-page>
 </clr-wizard>

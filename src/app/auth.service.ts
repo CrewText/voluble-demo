@@ -88,6 +88,7 @@ export class AuthService {
       this.auth0Auth.checkSession({}, (err, authResult) => {
         console.log("Renewing session")
         if (authResult && authResult.accessToken && authResult.idToken) {
+          cb(err, authResult)
         } else if (err) {
           //alert(`Could not get a new token (${err.error}: ${err.error_description}).`);
           this.logout();

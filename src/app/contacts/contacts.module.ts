@@ -6,6 +6,7 @@ import { AuthGuard } from '../auth/auth.guard';
 import { ContactListComponent } from '../contacts/contact-list/contact-list.component';
 import { FormsModule } from '@angular/forms';
 import { ContactDetailComponent } from './contact-detail/contact-detail.component';
+import { ContactCreatorComponent } from './contact-creator/contact-creator.component';
 
 const routes: Routes = [
   {
@@ -18,6 +19,11 @@ const routes: Routes = [
         data: { title: "Contact List" }
       },
       {
+        path: 'new',
+        component: ContactCreatorComponent,
+        data: { title: "Create Contact" }
+      },
+      {
         path: ':id',
         component: ContactDetailComponent
       }
@@ -27,7 +33,7 @@ const routes: Routes = [
 
 
 @NgModule({
-  declarations: [ContactListComponent, ContactDetailComponent],
+  declarations: [ContactListComponent, ContactDetailComponent, ContactCreatorComponent],
   imports: [
     FormsModule,
     ClarityModule,
