@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ContactsService } from 'src/app/contacts.service';
 import { Contact } from '../contact';
@@ -6,16 +6,17 @@ import { AuthService } from 'src/app/auth.service';
 
 
 @Component({
-  selector: 'app-contact-detail',
-  templateUrl: './contact-detail.component.html',
-  styleUrls: ['./contact-detail.component.css']
+  selector: 'app-contact-editor',
+  templateUrl: './contact-editor.component.html',
+  styleUrls: ['./contact-editor.component.css']
 })
-export class ContactDetailComponent implements OnInit {
+export class ContactEditorComponent implements OnInit {
 
   constructor(private contactsService: ContactsService,
     private route: ActivatedRoute,
     private authService: AuthService) { }
 
+  @Input() public contact_id: string;
   public contact: Contact;
   public userCanEdit = false
   public userCanDelete = false
@@ -29,8 +30,19 @@ export class ContactDetailComponent implements OnInit {
   }
 
   ngOnInit() {
-    let id = this.route.snapshot.paramMap.get('id')
-    this.getContact(id)
+
+    if (this.contact_id) {
+      this.getContact(this.contact_id)
+    } else {
+      if (this.route.snapshot.paramMap.get('id')) {
+        this.contact_id = this.route.snapshot.paramMap.get('id')
+        // can we move this logic to a component that is just for the route and add
+        // an <app-contact-editor> to it, like contact-creator?
+        this.getContact(this.contact_id)
+      } else {
+        //create new contact
+      }
+    }
   }
 
 }
