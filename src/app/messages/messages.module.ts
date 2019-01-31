@@ -8,6 +8,7 @@ import { MessagesListComponent } from './messagesList.component';
 import { MessageComposerComponent } from './message-composer/message-composer.component';
 import { FormsModule } from '@angular/forms';
 import { HasScopeGuard } from '../auth/has-scope.guard';
+import { scopes } from "voluble-common"
 
 
 const routes: Routes = [
@@ -19,20 +20,20 @@ const routes: Routes = [
         path: '',
         component: MessagesListComponent,
         canActivate: [HasScopeGuard],
-        data: { title: "Message List", scopes: ["message:read", "voluble:admin"] },
+        data: { title: "Message List", scopes: [scopes.MessageRead, scopes.VolubleAdmin] },
         pathMatch: 'full',
       },
       {
         path: 'compose',
         component: MessageComposerComponent,
         canActivate: [HasScopeGuard],
-        data: { title: 'Compose Message', scopes: ["message:send", "voluble:admin"] },
+        data: { title: 'Compose Message', scopes: [scopes.MessageSend, scopes.VolubleAdmin] },
         pathMatch: 'full'
       },
       {
         path: 'messages/:id',
         canActivate: [HasScopeGuard],
-        data: { scopes: ["message:read", "voluble:admin"] },
+        data: { scopes: [scopes.MessageRead, scopes.VolubleAdmin] },
         component: MessageDetailComponent
       },
     ]

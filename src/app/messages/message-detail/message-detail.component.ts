@@ -1,7 +1,8 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { MessagesService } from '../../messages.service';
-import { Message } from '../message';
+//import { Message } from '../message';
+import { Message } from 'voluble-common'
 
 @Component({
   selector: 'app-message-detail',

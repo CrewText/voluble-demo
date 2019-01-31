@@ -12,7 +12,6 @@ export class HasScopeGuard implements CanActivate {
     next: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): boolean {
     let scopes = next.data["scopes"]
-    console.log("Scope requested: ", scopes)
     return this.authService.userHasScope(scopes)
   }
 }

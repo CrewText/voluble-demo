@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MessagesService } from '../messages.service'
-import { Message } from './message'
+//import { Message } from './message'
+import { Message } from 'voluble-common'
 import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({

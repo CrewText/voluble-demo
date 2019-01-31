@@ -10,6 +10,7 @@ import { ContactCreatorComponent } from './contact-creator/contact-creator.compo
 import { ContactDetailComponent } from './contact-detail/contact-detail.component';
 import { ContactsComponent } from './contacts.component';
 import { HasScopeGuard } from '../auth/has-scope.guard';
+import { scopes } from "voluble-common"
 
 const routes: Routes = [
   {
@@ -21,19 +22,19 @@ const routes: Routes = [
         path: 'new',
         component: ContactCreatorComponent,
         canActivate: [HasScopeGuard],
-        data: { title: "Create Contact", scopes: ["contact:add", "voluble:admin"] }
+        data: { title: "Create Contact", scopes: [scopes.ContactAdd, scopes.VolubleAdmin] }
       },
       {
         path: ':id',
         component: ContactDetailComponent,
         canActivate: [HasScopeGuard],
-        data: { scopes: ["contact:view", "contact:edit", "voluble:admin"] }
+        data: { scopes: [scopes.ContactView, scopes.ContactEdit, scopes.VolubleAdmin] }
       },
       {
         path: '',
         canActivate: [HasScopeGuard],
         component: ContactListComponent,
-        data: { title: "Contact List", scopes: ["contact:view", "voluble:admin"] }
+        data: { title: "Contact List", scopes: [scopes.ContactView, scopes.VolubleAdmin] }
       },
     ]
   }

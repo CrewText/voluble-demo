@@ -36,6 +36,7 @@
     "express": "^4.16.4",
     "rxjs": "~6.3.3",
     "tslib": "^1.9.0",
+    "voluble-common": "git+https://git@github.com/calmcl1/voluble-common.git",
     "zone.js": "~0.8.26"
   },
   "devDependencies": {
