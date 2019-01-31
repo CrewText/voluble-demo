@@ -2,7 +2,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { MessagesService } from '../../messages.service';
 //import { Message } from '../message';
-import { Message } from 'voluble-common'
+import { Message, MessageStates } from 'voluble-common'
 
 @Component({
   selector: 'app-message-detail',
@@ -39,23 +39,22 @@ export class MessageDetailComponent implements OnInit {
     let msg_icon = "mail";
 
     switch (message_status) {
-      case "MSG_PENDING":
-      case "MSG_SENDING":
+      case MessageStates.MSG_PENDING:
+      case MessageStates.MSG_SENDING:
         msg_icon = "hourglass"
         break;
-      case "MSG_DELIVERED_SERVICE":
-      case "MSG_SENT":
-      case "MSG_DELIVERED_USER":
-      case "MSG_READ":
+      case MessageStates.MSG_DELIVERED_SERVICE:
+      case MessageStates.MSG_DELIVERED_USER:
+      case MessageStates.MSG_READ:
         msg_icon = "check"
         break;
-      case "MSG_REPLIED":
+      case MessageStates.MSG_REPLIED:
         msg_icon = "two-way-arrows"
         break
-      case "MSG_FAILED":
+      case MessageStates.MSG_FAILED:
         msg_icon = "error-standard"
         break
-      case "MSG_ARRIVED":
+      case MessageStates.MSG_ARRIVED:
         msg_icon = "envelope"
         break;
     }
@@ -64,7 +63,7 @@ export class MessageDetailComponent implements OnInit {
   }
 
   public getMessageStatusColour(message_status: string): string {
-    return message_status == "MSG_FAILED" ? "is-error" : (message_status == "MSG_PENDING" || message_status == "MSG_SENDING" ? "is-highlight" : "")
+    return message_status == MessageStates.MSG_FAILED ? "is-error" : (message_status == MessageStates.MSG_PENDING || message_status == MessageStates.MSG_SENDING ? "is-highlight" : "")
   }
 
   ngOnInit() {
