@@ -1,10 +1,9 @@
-import { Injectable, EventEmitter } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { EventEmitter, Injectable } from '@angular/core';
 import { JwtHelperService } from '@auth0/angular-jwt';
 import * as auth0 from 'auth0-js';
 import * as Promise from 'bluebird';
 import { environment } from 'src/environments/environment';
-import { HttpClient } from '@angular/common/http';
-import { VolubleRequest } from './voluble-request';
 
 @Injectable({
   providedIn: 'root'

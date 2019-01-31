@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { ActivatedRoute, NavigationEnd, Route, Router } from '@angular/router';
 import { Observable, of } from 'rxjs';
 import { filter, map, switchMap } from 'rxjs/operators';
+import { AuthService } from './auth.service';
 
 
 @Injectable({
@@ -9,7 +10,8 @@ import { filter, map, switchMap } from 'rxjs/operators';
 })
 export class SubnavService {
 
-  constructor(private router: Router, private route: ActivatedRoute) { }
+  constructor(private router: Router, private route: ActivatedRoute,
+    private authService: AuthService) { }
 
   public subNavItems: Observable<any[]>
   public activeMenuItem$: Observable<Route>
@@ -32,9 +34,17 @@ export class SubnavService {
       }
     })[0]
 
-    let children = config_route.children.filter((child) => {
-      if (child.data && child.data.title) { return true }
-    })
+    let children = config_route.children
+      .filter((child) => {
+        if (child.data && child.data.title) { return true }
+      })
+      .filter((child) => {
+        if (child.data && child.data.scopes) {
+          if (this.authService.userHasScope(child.data.scopes)) {
+            return true
+          } else { return false }
+        } else { return true }
+      })
       .map((child) => {
         return { title: child.data.title, path: `/${config_route.path}/${child.path}` }
       })

@@ -9,6 +9,7 @@ import { ContactEditorComponent } from './contact-editor/contact-editor.componen
 import { ContactCreatorComponent } from './contact-creator/contact-creator.component';
 import { ContactDetailComponent } from './contact-detail/contact-detail.component';
 import { ContactsComponent } from './contacts.component';
+import { HasScopeGuard } from '../auth/has-scope.guard';
 
 const routes: Routes = [
   {
@@ -19,16 +20,20 @@ const routes: Routes = [
       {
         path: 'new',
         component: ContactCreatorComponent,
-        data: { title: "Create Contact" }
+        canActivate: [HasScopeGuard],
+        data: { title: "Create Contact", scopes: ["contact:add", "voluble:admin"] }
       },
       {
         path: ':id',
-        component: ContactDetailComponent
+        component: ContactDetailComponent,
+        canActivate: [HasScopeGuard],
+        data: { scopes: ["contact:view", "contact:edit", "voluble:admin"] }
       },
       {
         path: '',
+        canActivate: [HasScopeGuard],
         component: ContactListComponent,
-        data: { title: "Contact List" }
+        data: { title: "Contact List", scopes: ["contact:view", "voluble:admin"] }
       },
     ]
   }

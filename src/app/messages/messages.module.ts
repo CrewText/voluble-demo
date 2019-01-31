@@ -7,6 +7,7 @@ import { MessageDetailComponent } from './message-detail/message-detail.componen
 import { MessagesListComponent } from './messagesList.component';
 import { MessageComposerComponent } from './message-composer/message-composer.component';
 import { FormsModule } from '@angular/forms';
+import { HasScopeGuard } from '../auth/has-scope.guard';
 
 
 const routes: Routes = [
@@ -17,17 +18,21 @@ const routes: Routes = [
       {
         path: '',
         component: MessagesListComponent,
-        data: { title: "Message List" },
+        canActivate: [HasScopeGuard],
+        data: { title: "Message List", scopes: ["message:read", "voluble:admin"] },
         pathMatch: 'full',
       },
       {
         path: 'compose',
         component: MessageComposerComponent,
-        data: { title: 'Compose Message' },
+        canActivate: [HasScopeGuard],
+        data: { title: 'Compose Message', scopes: ["message:send", "voluble:admin"] },
         pathMatch: 'full'
       },
       {
         path: 'messages/:id',
+        canActivate: [HasScopeGuard],
+        data: { scopes: ["message:read", "voluble:admin"] },
         component: MessageDetailComponent
       },
     ]
