@@ -7,17 +7,15 @@ import { ContactListComponent } from '../contacts/contact-list/contact-list.comp
 import { FormsModule } from '@angular/forms';
 import { ContactEditorComponent } from './contact-editor/contact-editor.component';
 import { ContactCreatorComponent } from './contact-creator/contact-creator.component';
+import { ContactDetailComponent } from './contact-detail/contact-detail.component';
+import { ContactsComponent } from './contacts.component';
 
 const routes: Routes = [
   {
     path: "contacts",
     canActivate: [AuthGuard],
+    component: ContactsComponent,
     children: [
-      {
-        path: '',
-        component: ContactListComponent,
-        data: { title: "Contact List" }
-      },
       {
         path: 'new',
         component: ContactCreatorComponent,
@@ -25,15 +23,20 @@ const routes: Routes = [
       },
       {
         path: ':id',
-        component: ContactEditorComponent
-      }
+        component: ContactDetailComponent
+      },
+      {
+        path: '',
+        component: ContactListComponent,
+        data: { title: "Contact List" }
+      },
     ]
   }
 ];
 
 
 @NgModule({
-  declarations: [ContactListComponent, ContactEditorComponent, ContactCreatorComponent],
+  declarations: [ContactListComponent, ContactDetailComponent, ContactEditorComponent, ContactCreatorComponent, ContactDetailComponent, ContactsComponent],
   imports: [
     FormsModule,
     ClarityModule,

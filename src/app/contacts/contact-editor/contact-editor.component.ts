@@ -17,6 +17,7 @@ export class ContactEditorComponent implements OnInit {
     private authService: AuthService) { }
 
   @Input() public contact_id: string;
+  @Input() public new_contact: boolean
   public contact: Contact;
   public userCanEdit = false
   public userCanDelete = false
@@ -34,15 +35,17 @@ export class ContactEditorComponent implements OnInit {
     if (this.contact_id) {
       this.getContact(this.contact_id)
     } else {
-      if (this.route.snapshot.paramMap.get('id')) {
-        this.contact_id = this.route.snapshot.paramMap.get('id')
-        // can we move this logic to a component that is just for the route and add
-        // an <app-contact-editor> to it, like contact-creator?
-        this.getContact(this.contact_id)
-      } else {
-        //create new contact
+      this.contact = {
+        id: null,
+        first_name: null,
+        surname: null,
+        email_address: null,
+        phone_number: null,
+        createdAt: null,
+        updatedAt: null,
+        OrganizationId: null,
+        ServicechainId: null
       }
     }
   }
-
 }

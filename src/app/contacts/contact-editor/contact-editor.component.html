@@ -1,6 +1,5 @@
-<h2>Contact</h2>
-<span class="spinner" *ngIf="!contact"></span>
-<div class="card" *ngIf="contact">
+<span class="spinner" *ngIf="!contact && new_contact===false"></span>
+<div class="card" *ngIf="contact || new_contact">
   <div class="card-header">
     {{contact.first_name}} {{contact.surname}}
   </div>
