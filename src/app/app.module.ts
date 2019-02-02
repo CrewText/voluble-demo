@@ -4,7 +4,6 @@ import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { JwtModule } from '@auth0/angular-jwt';
 import { ClarityModule } from '@clr/angular';
-import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { AuthModule } from './auth/auth.module';
 import { ContactsModule } from './contacts/contacts.module';
@@ -38,7 +37,6 @@ export function getAuthToken(): string {
         whitelistedDomains: ['localhost:4200', 'auth0.com', 'voluble-poc.herokuapp.com', 'crewtext.com', 'lvh.me:5000']
       }
     }),
-    AppRoutingModule,
     ClarityModule,
   ],
   bootstrap: [AppComponent]
