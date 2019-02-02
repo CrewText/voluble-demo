@@ -50,7 +50,7 @@
       <button class="btn">Save</button>
       <button class="btn">Cancel</button>
     </div>
-    <button class="btn btn-outline-danger" *ngIf="userCanDelete">Delete</button>
+    <button class="btn btn-outline-danger" *ngIf="userCanDelete && !new_contact" (click)="deleteContact()">Delete</button>
     <p *ngIf="!userCanEdit">You cannot edit this contact.</p>
   </div>
 </div>

@@ -1,8 +1,9 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ContactsService } from 'src/app/contacts.service';
 import { Contact } from '../contact';
 import { AuthService } from 'src/app/auth.service';
+import { scopes } from 'voluble-common';
 
 
 @Component({
@@ -14,7 +15,8 @@ export class ContactEditorComponent implements OnInit {
 
   constructor(private contactsService: ContactsService,
     private route: ActivatedRoute,
-    private authService: AuthService) { }
+    private authService: AuthService,
+    private router: Router) { }
 
   @Input() public contact_id: string;
   @Input() public new_contact: boolean
@@ -25,13 +27,25 @@ export class ContactEditorComponent implements OnInit {
   private getContact(id: string) {
     this.contactsService.getContact(id).subscribe((contactReq) => {
       this.contact = contactReq.data
-      this.userCanEdit = this.authService.userHasScope(['contact:edit', 'voluble:admin'])
-      this.userCanDelete = this.authService.userHasScope(['contact:delete', 'voluble:admin'])
     })
   }
 
-  ngOnInit() {
+  private determinePermissions() {
+    this.userCanEdit = this.authService.userHasScope([scopes.VolubleAdmin]) || (!this.new_contact && this.authService.userHasScope([scopes.ContactEdit])) || (this.new_contact && this.authService.userHasScope([scopes.ContactAdd]))
+    this.userCanDelete = this.authService.userHasScope([scopes.ContactDelete, scopes.VolubleAdmin])
+  }
 
+  public deleteContact() {
+    this.contactsService.deleteContact(this.contact_id)
+      .subscribe((deleteReq) => {
+        if (deleteReq.status == "success") {
+          this.router.navigate(['/contacts'])
+        }
+      })
+  }
+
+  ngOnInit() {
+    this.determinePermissions()
     if (this.contact_id) {
       this.getContact(this.contact_id)
     } else {
@@ -47,5 +61,7 @@ export class ContactEditorComponent implements OnInit {
         ServicechainId: null
       }
     }
+    console.log(this.userCanEdit)
+    console.log([this.authService.userHasScope([scopes.VolubleAdmin]), (!this.new_contact && this.authService.userHasScope([scopes.ContactEdit])), (this.new_contact && this.authService.userHasScope([scopes.ContactAdd]))])
   }
 }
