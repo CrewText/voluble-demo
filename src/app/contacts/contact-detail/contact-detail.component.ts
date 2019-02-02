@@ -10,7 +10,7 @@ export class ContactDetailComponent implements OnInit {
 
   constructor(private route: ActivatedRoute) { }
 
-  private contact_id: string
+  public contact_id: string
 
   ngOnInit() {
     this.contact_id = this.route.snapshot.paramMap.get('id')
