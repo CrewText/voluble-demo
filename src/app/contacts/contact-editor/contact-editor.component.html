@@ -47,7 +47,7 @@
   </div>
   <div class="card-footer">
     <div class="btn-group btn-link" *ngIf="userCanEdit">
-      <button class="btn">Save</button>
+      <button class="btn" (click)="saveContact()">Save</button>
       <button class="btn">Cancel</button>
     </div>
     <button class="btn btn-outline-danger" *ngIf="userCanDelete && !new_contact" (click)="deleteContact()">Delete</button>

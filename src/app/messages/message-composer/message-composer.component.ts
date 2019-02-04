@@ -22,7 +22,7 @@ export class MessageComposerComponent implements OnInit, OnChanges {
   @Input() message_text: string = ""
   @Input() contact: Contact
   public servicechainsAvailable: Servicechain[]
-  @Input() public servicechain: Servicechain
+  @Input() servicechain: Servicechain
   public contactsList: Contact[]
 
   getContacts() {
@@ -48,10 +48,11 @@ export class MessageComposerComponent implements OnInit, OnChanges {
   }
 
   sendMessage() {
+    console.log(this.servicechain)
     let msg = {
       msg_body: this.message_text,
       contact_id: this.contact.id,
-      servicechain_id: this.servicechain.id,
+      servicechain_id: this.servicechain ? this.servicechain.id : null,
     }
 
     console.log(msg)

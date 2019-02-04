@@ -44,8 +44,14 @@ export class ContactEditorComponent implements OnInit {
       })
   }
 
-  public onSave() {
-    this.contactsService.createNewContact(this.contact)
+  public saveContact() {
+    if (this.new_contact) {
+      console.log(this.contact)
+      this.contactsService.createNewContact(this.contact)
+        .subscribe((contactCreateReq) => {
+          console.log(contactCreateReq)
+        })
+    }
   }
 
   ngOnInit() {
