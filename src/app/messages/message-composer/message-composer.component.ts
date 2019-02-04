@@ -4,8 +4,7 @@ import { ContactsService } from 'src/app/contacts.service';
 import { Contact } from 'src/app/contacts/contact';
 import { MessagesService } from 'src/app/messages.service';
 import { ServicechainService } from 'src/app/servicechain.service';
-import { Servicechain } from 'src/app/servicechains/servicechain';
-import { Message } from '../message';
+import { Servicechain } from 'voluble-common';
 
 @Component({
   selector: 'app-message-composer',
@@ -16,8 +15,7 @@ export class MessageComposerComponent implements OnInit, OnChanges {
 
   constructor(private contactsService: ContactsService,
     private messagesService: MessagesService,
-    private scService: ServicechainService,
-    private authService: AuthService) { }
+    private scService: ServicechainService) { }
 
   @Input() message_text: string = ""
   @Input() contact: Contact

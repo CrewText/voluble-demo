@@ -3,7 +3,8 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { ContactsService } from 'src/app/contacts.service';
 import { Contact } from '../contact';
 import { AuthService } from 'src/app/auth.service';
-import { scopes } from 'voluble-common';
+import { scopes, Servicechain } from 'voluble-common';
+import { ServicechainService } from 'src/app/servicechain.service';
 
 
 @Component({
@@ -14,6 +15,7 @@ import { scopes } from 'voluble-common';
 export class ContactEditorComponent implements OnInit {
 
   constructor(private contactsService: ContactsService,
+    private scService: ServicechainService,
     private route: ActivatedRoute,
     private authService: AuthService,
     private router: Router) { }
@@ -23,6 +25,7 @@ export class ContactEditorComponent implements OnInit {
   public contact: Contact;
   public userCanEdit = false
   public userCanDelete = false
+  public servicechainsAvailable: Servicechain[]
 
   private getContact(id: string) {
     this.contactsService.getContact(id).subscribe((contactReq) => {
@@ -54,6 +57,15 @@ export class ContactEditorComponent implements OnInit {
     }
   }
 
+  getServicechainsAvailable() {
+    if (this.contact) {
+      this.scService.getServicechainsForOrg(this.contact.OrganizationId)
+        .subscribe((scsReq) => {
+          this.servicechainsAvailable = scsReq.data
+        })
+    }
+  }
+
   ngOnInit() {
     this.determinePermissions()
     if (this.contact_id) {
@@ -70,6 +82,7 @@ export class ContactEditorComponent implements OnInit {
         OrganizationId: null,
         ServicechainId: null
       }
+      this.getServicechainsAvailable()
     }
     console.log(this.userCanEdit)
     console.log([this.authService.userHasScope([scopes.VolubleAdmin]), (!this.new_contact && this.authService.userHasScope([scopes.ContactEdit])), (this.new_contact && this.authService.userHasScope([scopes.ContactAdd]))])

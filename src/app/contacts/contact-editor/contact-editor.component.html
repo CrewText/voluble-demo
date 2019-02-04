@@ -34,7 +34,7 @@
           <label for="email_address">
             Email Address
           </label>
-          <input clrInput type="text" name="email_address" [(ngModel)]="contact.email_address">
+          <input clrInput type="email" name="email_address" [(ngModel)]="contact.email_address">
         </clr-input-container>
         <clr-input-container>
           <label for="phone_number">
@@ -45,6 +45,23 @@
       </form>
     </div>
   </div>
+
+  <div class="card-block">
+    <div class="card-title">
+      Servicechain
+    </div>
+    <form clrForm>
+      <clr-select-container>
+        <label for="default_servicechain">
+          Default Servicechain
+        </label>
+        <select clrSelect [(ngModel)]="contact.ServicechainId" name="servicechainId">
+          <option *ngFor="let sc of servicechainsAvailable" [ngValue]="sc.id">{{sc.name}}</option>
+        </select>
+      </clr-select-container>
+    </form>
+  </div>
+
   <div class="card-footer">
     <div class="btn-group btn-link" *ngIf="userCanEdit">
       <button class="btn" (click)="saveContact()">Save</button>
