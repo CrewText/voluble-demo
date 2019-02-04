@@ -24,8 +24,8 @@ export class ContactsService {
       .pipe(retry(3))
   }
 
-  createNewContact(contact: Contact): Observable<VolubleRequest<Contact>> {
-    return this.httpClient.post<VolubleRequest<Contact>>(`${environment.volubleApiUrl}/contacts/`, contact)
+  createNewContact(contact: Contact): Observable<VolubleRequest<Contact[]>> {
+    return this.httpClient.post<VolubleRequest<Contact[]>>(`${environment.volubleApiUrl}/contacts/`, [contact])
   }
 
   deleteContact(contact_id: string): Observable<VolubleRequest<boolean>> {

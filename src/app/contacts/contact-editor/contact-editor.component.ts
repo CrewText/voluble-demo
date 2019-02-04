@@ -44,6 +44,10 @@ export class ContactEditorComponent implements OnInit {
       })
   }
 
+  public onSave() {
+    this.contactsService.createNewContact(this.contact)
+  }
+
   ngOnInit() {
     this.determinePermissions()
     if (this.contact_id) {
